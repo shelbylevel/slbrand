@@ -31,7 +31,7 @@ library(bslib)
 library(slbrand)
 
 ui <- page_sidebar(
-  title = "Hockey R Learning Hub",
+  title = "Dashboard Title",
   theme = theme_sl(),
   sidebar = sidebar(...),
   ...
