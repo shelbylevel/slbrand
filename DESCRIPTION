@@ -1,0 +1,25 @@
+Package: slbrand
+Title: Shelby Level Brand Theme for Shiny and Quarto
+Version: 0.1.0
+Authors@R: 
+    person("Shelby", "Level", email = "you@example.com", role = c("aut", "cre"))
+Description: Centralizes the Shelby Level brand.yml file, logo assets, and
+    helper functions so brand-consistent theming (colors, typography, and
+    custom CSS rules) can be applied across multiple Shiny dashboards and
+    Quarto documents from a single source of truth.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Depends:
+    R (>= 4.1.0)
+Imports:
+    bslib (>= 0.9.0),
+    brand.yml,
+    yaml,
+    cli
+Suggests:
+    thematic,
+    ggplot2,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
