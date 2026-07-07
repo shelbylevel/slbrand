@@ -47,7 +47,6 @@ typography:
     size: "1rem"
     line-height: 1.6
     weight: 300
-    # color: foreground
   
   headings:
     family: "Nunito Sans"
@@ -55,7 +54,6 @@ typography:
     weight: 600
     line-height: 1.2
     color: primary
-    # text-transform: uppercase
 
 defaults:
   bootstrap:
@@ -67,6 +65,11 @@ defaults:
     theme:
       preset: shiny # base
       rules: | # CSS rules
+        /* Uppercase headings */
+        h1, h2, h3, h4, h5, h6 {
+          text-transform: uppercase;
+        }
+
         /* Remove flex from tab content */
         .tab-pane.html-fill-container {
           display: block !important;
