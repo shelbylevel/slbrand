@@ -12,16 +12,29 @@ logo_path <- function() {
   path
 }
 
-#' Shelby Level logo as a navbar nav_item
+#' Shelby Level logo as a navbar nav_item, linked to the brand site
 #'
 #' Pass to `page_navbar(nav_item = logo_nav_item())`. Pair with
 #' [logo_header()] so the logo's cutout rectangle matches the navbar
 #' background in both light and dark mode.
 #'
+#' @param href URL the logo links to. Defaults to the `meta.link` value
+#'   in `_brand.yml`.
+#'
 #' @export
-logo_nav_item <- function() {
+logo_nav_item <- function(href = read_brand()$meta$link) {
   svg_lines <- suppressWarnings(readLines(logo_path()))
-  bslib::nav_item(htmltools::HTML(paste(svg_lines, collapse = "\n")))
+  svg_html <- htmltools::HTML(paste(svg_lines, collapse = "\n"))
+
+  bslib::nav_item(
+    htmltools::tags$a(
+      href = href,
+      target = "_blank",
+      rel = "noopener noreferrer",
+      style = "text-decoration: none; display: inline-block;",
+      svg_html
+    )
+  )
 }
 
 #' Header script that keeps the logo cutout matched to the navbar color
