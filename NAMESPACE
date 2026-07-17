@@ -2,6 +2,9 @@
 
 export(brand_colors)
 export(brand_path)
+export(logo_header)
+export(logo_nav_item)
+export(logo_path)
 export(read_brand)
 export(theme_sl)
 export(use_sl_thematic)
