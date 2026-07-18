@@ -1,0 +1,27 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("logos/sl-logo.svg")
+            .then(r => r.text())
+            .then(svg => {
+                const brand = document.querySelector(".navbar-brand");
+                if (brand) brand.innerHTML = svg;
+                const svgEl = document.querySelector("#logo-svg");
+                if (svgEl) {
+                    svgEl.setAttribute("width", "127.5");
+                    svgEl.setAttribute("height", "60");
+                }
+                const navbar = document.querySelector(".navbar");
+                const rect = document.querySelector("#logo-svg rect");
+                if (navbar && rect) {
+                    rect.setAttribute("fill", getComputedStyle(navbar).backgroundColor);
+                }
+            });
+    });
+    document.addEventListener("quarto-color-scheme-changed", function () {
+        const navbar = document.querySelector(".navbar");
+        const rect = document.querySelector("#logo-svg rect");
+        if (navbar && rect) {
+            rect.setAttribute("fill", getComputedStyle(navbar).backgroundColor);
+        }
+    });
+</script>
