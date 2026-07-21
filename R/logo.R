@@ -31,7 +31,7 @@ logo_nav_item <- function(href = read_brand()$meta$link) {
       href = href,
       target = "_blank",
       rel = "noopener noreferrer",
-      style = "text-decoration: none; display: inline-block;",
+      style = "padding: 0; display: inline-block;",
       svg_html
     )
   )
