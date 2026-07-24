@@ -2,9 +2,13 @@
 % Please edit documentation in R/logo.R
 \name{logo_nav_item}
 \alias{logo_nav_item}
-\title{Shelby Level logo as a navbar nav_item}
+\title{Shelby Level logo as a navbar nav_item, linked to the brand site}
 \usage{
-logo_nav_item()
+logo_nav_item(href = read_brand()$meta$link)
+}
+\arguments{
+\item{href}{URL the logo links to. Defaults to the \code{meta.link} value
+in \verb{_brand.yml}.}
 }
 \description{
 Pass to \code{page_navbar(nav_item = logo_nav_item())}. Pair with

@@ -46,16 +46,16 @@ logo_header <- function() {
   htmltools::tags$head(
     htmltools::tags$script(htmltools::HTML(
       "
-      function updateLogoRectColor() {
+      function syncLogoRectColor() {
         const navbar = document.querySelector('.navbar');
         const rect = document.querySelector('#logo-svg rect');
         if (navbar && rect) {
           rect.setAttribute('fill', getComputedStyle(navbar).backgroundColor);
         }
       }
-      document.addEventListener('DOMContentLoaded', updateLogoRectColor);
+      document.addEventListener('DOMContentLoaded', syncLogoRectColor);
       $(document).on('shiny:inputchanged', function(event) {
-        setTimeout(updateLogoRectColor, 50);
+        setTimeout(syncLogoRectColor, 50);
       });
     "
     ))
