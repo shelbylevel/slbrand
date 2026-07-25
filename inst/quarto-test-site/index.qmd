@@ -1,0 +1,14 @@
+---
+title: "Quarto Test Site"
+---
+
+Before rendering, run `quarto add shelbylevel/slbrand` from inside this
+directory to install the extension, matching how a real consumer project
+would use it.
+
+## Manual QA checklist
+
+- [ ] Hover over logo — underline animation plays
+- [ ] Toggle light/dark mode — rect cutout color updates to match navbar
+- [ ] Resize to narrow/mobile width — logo scales down, no overflow
+- [ ] Compare rendering in Safari vs. Arc/Chrome — should be pixel-identical

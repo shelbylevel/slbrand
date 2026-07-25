@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^.*\.Rproj$
 ^_extensions$
+^inst/quarto-test-site$

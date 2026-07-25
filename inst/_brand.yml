@@ -56,7 +56,7 @@ typography:
     color: primary
 
 defaults:
-  bootstrap:
+  # bootstrap:
     # defaults: # defaults also supports a string as its value
     #   navbar-light-hover-color: $brand-faded_jade
   shiny:

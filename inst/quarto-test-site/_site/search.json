@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quarto Test Site",
+    "section": "",
+    "text": "Before rendering, run quarto add shelbylevel/slbrand from inside this directory to install the extension, matching how a real consumer project would use it."
+  },
+  {
+    "objectID": "index.html#manual-qa-checklist",
+    "href": "index.html#manual-qa-checklist",
+    "title": "Quarto Test Site",
+    "section": "Manual QA checklist",
+    "text": "Manual QA checklist\n\nHover over logo — underline animation plays\nToggle light/dark mode — rect cutout color updates to match navbar\nResize to narrow/mobile width — logo scales down, no overflow\nCompare rendering in Safari vs. Arc/Chrome — should be pixel-identical"
+  }
+]

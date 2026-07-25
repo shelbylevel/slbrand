@@ -1,0 +1,16 @@
+project:
+  type: website
+
+website:
+  navbar:
+    right:
+      - href: index.qmd
+        text: "Test"
+
+format:
+  html:
+    include-in-header:
+      - _extensions/shelbylevel/brand/logo-header.html
+    theme: _brand.yml
+    toc: true
+    page-layout: full
