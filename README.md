@@ -1,5 +1,4 @@
 # slbrand <a href="https://www.shelbylevel.org"><img src="man/figures/sl-hex-sticker.png" align="right" height="138" style="padding-left: 10px;" /></a>
----
 
 Centralized `_brand.yml`, animated SVG logo, and helper functions for applying consistent Shelby Level branding across every Shiny dashboard and Quarto output, from one source of truth — instead of copying brand files into each repo separately.
 
