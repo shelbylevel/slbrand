@@ -1,0 +1,50 @@
+/*-- scss:mixins --*/
+
+@mixin btn-inverse {
+  background-color: transparent;
+  transition: color 0.15s ease-in;
+
+  &:hover {
+    background-color: $brand-faded-jade;
+    color: $brand-faded-jade-10;
+    border-color: $brand-faded-jade;
+  }
+
+  i {
+    margin-right: 8px;
+  }
+}
+
+/*-- scss:rules --*/
+
+// =============================================================================
+// BUTTONS
+// =============================================================================
+
+/* div.quarto-about-solana .about-entity .about-link - social buttons used in about.qmd */
+/* div.quarto-post .listing-categories .listing-category - category tags on listing cards */
+/* .btn-links - buttons used in posts */
+/* .project-buttons>p>a - buttons used in posts */
+div.quarto-about-solana .about-entity .about-link,
+div.quarto-post .listing-categories .listing-category,
+.btn-links,
+.project-buttons>p>a {
+  color: $brand-deep-jade;
+  border-color: $brand-deep-jade;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+
+  @include btn-inverse;
+}
+
+.btn,
+.quarto-title .quarto-category {
+  background-color: transparent;
+  color: $brand-faded-jade;
+  border: solid 1px;
+  border-radius: 4px;
+  font-size: 1rem;
+
+  @include btn-inverse;
+}

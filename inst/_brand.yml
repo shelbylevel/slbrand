@@ -20,56 +20,128 @@ color:
     moonstone: "#969996"
     storm-cloud: "#64635E"
     plum-crazy: "#59224A"
-  
-  foreground: "#000000"         # main text color
-  background: "#ffffff"         # background
-  primary: "#45767a"            # primary brand color
-  secondary: "#7fa6ad"          # secondary accent
-  tertiary: "#a2bbbd"           # tertiary accent
-  success: "#727E70"            # success states
-  info: "#b2c5b4"               # info messages
-  warning: "#B8AEA8"            # warnings
-  danger: "#6f4a64"             # errors/danger
-  light: "#ecf1f2"              # light backgrounds
-  dark: "#64635E"               # dark elements
+
+  foreground: deep-jade
+  background: faded-jade-10
+  primary: faded-jade
+  secondary: gulfstream
+  tertiary: faded-jade-50
+  success: boulder
+  info: spring-rain
+  warning: almond-dust
+  danger: plum-crazy
+  light: faded-jade-10
+  dark: storm-cloud
 
 typography:
   fonts:
-    - family: "Lato"
+    - family: Lato
       source: google
       weight: [200, 300, 400, 600]
-    - family: "Nunito Sans"
+    - family: Nunito Sans
       source: google
       weight: [400, 600]
-  
+    - family: Open Sans
+      source: google
+      weight: [200, 300, 400, 500, 600, 700]
+
   base:
-    family: "Lato"
+    family: Lato
+    weight: 300
     size: "1rem"
     line-height: 1.6
-    weight: 300
-  
+    # color: deep-jade
+
   headings:
-    family: "Nunito Sans"
+    family: Nunito Sans
+    weight: 300
     style: normal
-    weight: 600
     line-height: 1.2
-    color: primary
+    color: faded-jade
+
+  monospace: Open Sans
+  monospace-inline:
+    color: plum-crazy
+    background-color: edgewater-20
+  monospace-block:
+    background-color: edgewater-20
+
+  link:
+    color: faded-jade
 
 defaults:
-  # bootstrap:
-    # defaults: # defaults also supports a string as its value
-    #   navbar-light-hover-color: $brand-faded_jade
+  bootstrap:
+    defaults: # defaults also supports a string as its value
+      # BASE DOCUMENT COLORS #################################
+      navbar-bg: $brand-faded-jade-10
+      navbar-fg: $brand-faded-jade # navbar foreground elements
+      # navbar-hl: $brand-deep-jade; # highlight color when hovering over navbar links
+      footer-bg: $brand-faded-jade-50
+      footer-fg: $brand-deep-jade
+      link-hover-color: $brand-deep-jade
+      # TYPOGRAPHY #########################################
+      navbar-padding-y: 0.5rem
+      # btn-font-weight: 500
+      # headings-margin-bottom: 0.5rem
+    rules: |
+      // =============================================================================
+      // NAVBAR
+      // =============================================================================
+
+      /* Text Menus and Underline Animation */
+      .menu-text {
+        display: inline-block;
+        position: relative;
+        font-weight: 500;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 0.1em;
+          background-color: $link-hover-color;
+          transform: scaleX(0);
+          transition: transform 300ms ease;
+        }
+
+        &:hover,
+        &:focus,
+        .nav-link.active &,
+        .nav-link[aria-current="page"] & {
+          color: $link-hover-color;
+
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+      }
+
+      /* Icon hover color */
+      .nav-item.compact .nav-link:hover,
+      #quarto-search:hover svg,
+      #quarto-search:focus-within svg {
+        color: $link-hover-color;
+        fill: $link-hover-color !important;
+      }
+
+      // =============================================================================
+      // ABOUT PAGE
+      // =============================================================================
+
+      div.quarto-about-solana .about-entity .about-image {
+        width: 25em !important;
+        max-width: 100%;
+        height: auto;
+      }
+
   shiny:
     defaults:
       navbar-light-hover-color: $brand-faded-jade
     theme:
       preset: shiny # base
       rules: | # CSS rules
-        /* Uppercase headings */
-        h1, h2, h3, h4, h5, h6 {
-          text-transform: uppercase;
-        }
-
         /* Remove flex from tab content */
         .tab-pane.html-fill-container {
           display: block !important;

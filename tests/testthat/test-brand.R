@@ -30,3 +30,9 @@ test_that("brand_colors() returns expected color subsets", {
     length(palette_colors) + length(semantic_colors)
   )
 })
+
+test_that("extension _brand.yml and inst/_brand.yml are identical", {
+  ext <- testthat::test_path("..", "..", "_extensions", "shelbylevel", "brand", "_brand.yml")
+  skip_if_not(file.exists(ext), "extension not present (installed package)")
+  expect_identical(readLines(ext), readLines(brand_path()))
+})

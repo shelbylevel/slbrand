@@ -85,26 +85,34 @@ This installs the extension into that project's own
 project's repo — Quarto extensions are meant to be vendored per-project,
 similar to how `renv` vendors an R library.
 
-**Then add one line to that project's `_quarto.yml`**, under your existing
-`html:` format block:
+**Then point that project's `_quarto.yml` at the extension's files.** The
+extension registers `_brand.yml` as the project brand automatically; the
+theme list below layers Lux, the brand, and the shared SCSS in that order
+(later entries win, and `brand` must come *after* the Bootswatch theme or
+Lux overrides it):
 
 ```yaml
 format:
   html:
+    theme:
+      - lux
+      - brand
+      - _extensions/shelbylevel/brand/sl-styles.scss
+      - _extensions/shelbylevel/brand/_posts.scss
+      - _extensions/shelbylevel/brand/_sourceCode.scss
     include-in-header:
       - _extensions/shelbylevel/brand/logo-header.html
-    theme: _brand.yml
 ```
 
-> **Why an explicit reference, not automatic:** Quarto extensions that
-> contribute keys under an existing base format (`html`) don't merge
-> into your project's plain `html` format automatically — they define a
-> *new* derived format (e.g. `brand-html`) that only activates if you
-> explicitly opt into it. Rather than rename your project's format and
-> re-declare your existing theme/navbar config under it, we reference
-> the extension's file directly. You still get centralized updates via
-> `quarto update` below — this just skips relying on auto-merge behavior
-> that doesn't actually apply here.
+> **Do not put a `.yml` path in `theme:`.** `theme:` accepts Bootswatch
+> names, `.scss` files and the keyword `brand`. A `_brand.yml` path there is
+> not a brand reference, so the brand styling silently disappears. If the
+> brand is not picked up automatically, add
+> `brand: _extensions/shelbylevel/brand/_brand.yml` at the top level of
+> `_quarto.yml`.
+>
+> `include-in-header` still has to be listed explicitly: the extension
+> contributes only project metadata (the brand), not a derived format.
 
 The logo SVG and its color-matching/hover-animation script are both
 **inlined directly** inside `logo-header.html` (via a hidden `<template>`
@@ -296,9 +304,11 @@ slbrand/
 project:
   type: website
 
+brand: _extensions/shelbylevel/brand/_brand.yml
+
 format:
   html:
-    theme: _brand.yml
+    theme: [lux, brand]
     include-in-header:
       - _extensions/shelbylevel/brand/logo-header.html
 ```
@@ -365,3 +375,10 @@ inside `_extensions/shelbylevel/brand/logo-header.html` (for Quarto).
 If you change the logo's **content** (text, colors, paths), update
 both. The **height** and **viewBox** values are intentional exceptions
 — see above — and do not need to match between the two.
+
+## Single source of truth
+
+`_extensions/shelbylevel/brand/_brand.yml` is the canonical brand file;
+`inst/_brand.yml` (used by `theme_sl()` for Shiny) must be an identical copy.
+`tests/testthat/test-brand.R` fails if they drift. After editing one, run
+`cp _extensions/shelbylevel/brand/_brand.yml inst/_brand.yml`.
