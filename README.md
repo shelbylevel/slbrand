@@ -378,7 +378,7 @@ both. The **height** and **viewBox** values are intentional exceptions
 
 ## Single source of truth
 
-`_extensions/shelbylevel/brand/_brand.yml` is the canonical brand file;
-`inst/_brand.yml` (used by `theme_sl()` for Shiny) must be an identical copy.
-`tests/testthat/test-brand.R` fails if they drift. After editing one, run
-`cp _extensions/shelbylevel/brand/_brand.yml inst/_brand.yml`.
+Edit **only** `_extensions/shelbylevel/brand/_brand.yml`. The `sync-brand`
+GitHub Action copies it to `inst/_brand.yml` (used by `theme_sl()`) on every
+push, so the two never drift. Locally, `git pull` after pushing to pick up
+the sync commit. `tests/testthat/test-brand.R` still fails if they differ.

@@ -1,0 +1,28 @@
+# Keeps inst/_brand.yml (used by theme_sl()) identical to the canonical
+# extension file. Edit ONLY _extensions/shelbylevel/brand/_brand.yml.
+name: sync-brand
+
+on:
+  push:
+    paths:
+      - "_extensions/shelbylevel/brand/_brand.yml"
+      - "inst/_brand.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy extension brand into inst/
+        run: |
+          if ! cmp -s _extensions/shelbylevel/brand/_brand.yml inst/_brand.yml; then
+            cp _extensions/shelbylevel/brand/_brand.yml inst/_brand.yml
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add inst/_brand.yml
+            git commit -m "chore: sync inst/_brand.yml from extension [skip ci]"
+            git push
+          fi
