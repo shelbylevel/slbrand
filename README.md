@@ -114,6 +114,20 @@ format:
 > `include-in-header` still has to be listed explicitly: the extension
 > contributes only project metadata (the brand), not a derived format.
 
+**Shared code highlighting.** The Tomorrow Night Eighties code colors come
+from `_sourceCode.scss` (in the `theme:` list above) plus a post-render
+script that skylighting can't replace: hex-color pills, rainbow brackets,
+namespace and `=`/`<-` operator colors. Add to `_quarto.yml`:
+
+```yaml
+project:
+  post-render: _extensions/shelbylevel/brand/postprocess_code_highlighting.R
+```
+
+The script needs the `xml2` R package. The `.codewindow` styling also needs
+the `quarto-codewindow` extension (`quarto add mcanouil/quarto-codewindow`),
+which this repo does not bundle.
+
 The logo SVG and its color-matching/hover-animation script are both
 **inlined directly** inside `logo-header.html` (via a hidden `<template>`
 tag) rather than fetched as a separate file at render time. This was a
